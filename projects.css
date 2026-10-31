@@ -1,0 +1,245 @@
+:root{
+    color-scheme: dark;
+    --dark-bg: #0a0a0a;
+    --darker-bg: #050505;
+    --accent: #2ecc71;
+    --accent-glow: rgba(46, 204, 113, 0.18);
+    --text: #ffffff;
+    font-family: "Segoe UI", sans-serif;
+}
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+    background: var(--dark-bg);
+    color: var(--text);
+    line-height: 1.6;
+}
+
+.navbar{
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.25rem 5%;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(10, 10, 10, 0.95);
+}
+
+.logo{
+    color: var(--accent);
+    font-size: 1.75rem;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.nav-menu{
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.nav-menu a{
+    color: var(--text);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.nav-menu a:hover,
+.nav-menu a[aria-current="page"]{
+    color: var(--accent);
+}
+
+.menu-toggle{
+    display: none;
+    border: 0;
+    background: transparent;
+    color: var(--text);
+    font-size: 1.4rem;
+    cursor: pointer;
+}
+
+main{
+    flex: 1;
+}
+
+.projects-page{
+    width: min(1100px, 90%);
+    margin: 0 auto;
+    padding: 6rem 0;
+}
+
+.page-heading{
+    max-width: 720px;
+    margin: 0 auto 3rem;
+    text-align: center;
+}
+
+.eyebrow{
+    color: var(--accent);
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+}
+
+.page-heading h1{
+    margin: 0.5rem 0 1rem;
+    background: linear-gradient(45deg, var(--accent), #ffffff);
+    background-clip: text;
+    color: transparent;
+    font-size: clamp(2.5rem, 7vw, 4rem);
+}
+
+.page-heading > p:last-child{
+    color: rgba(255, 255, 255, 0.75);
+    font-size: 1.1rem;
+}
+
+.projects-list{
+    display: grid;
+    gap: 1.5rem;
+}
+
+.project-row{
+    display: grid;
+    grid-template-columns: minmax(220px, 0.8fr) minmax(0, 1.2fr);
+    gap: 2rem;
+    align-items: center;
+    padding: 1.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.04);
+    transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.project-row:hover{
+    transform: translateY(-3px);
+    border-color: var(--accent);
+}
+
+.project-preview{
+    min-height: 190px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    border: 1px dashed rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+    background: radial-gradient(circle at 50% 0, var(--accent-glow), transparent 70%);
+    color: rgba(255, 255, 255, 0.65);
+}
+
+.project-preview i{
+    color: var(--accent);
+    font-size: 2rem;
+}
+
+.project-image{
+    width: 100%;
+    height: 100%;
+    min-height: 190px;
+    border-radius: 12px;
+    object-fit: cover;
+}
+
+.project-number{
+    margin-bottom: 0.35rem;
+    color: var(--accent);
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+}
+
+.project-details h2{
+    margin-bottom: 0.5rem;
+    font-size: 1.5rem;
+}
+
+.project-details > p:not(.project-number){
+    color: rgba(255, 255, 255, 0.72);
+}
+
+.project-tech{
+    margin-top: 0.75rem;
+}
+
+.project-tech strong{
+    color: var(--text);
+}
+
+.project-links{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.project-link-placeholder{
+    color: var(--accent);
+    font-weight: 600;
+    opacity: 0.8;
+}
+
+.footer{
+    padding: 1.5rem 5%;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    background: var(--darker-bg);
+    color: rgba(255, 255, 255, 0.7);
+    text-align: center;
+}
+
+@media (max-width: 600px){
+    .navbar{
+        flex-wrap: wrap;
+    }
+
+    .menu-toggle{
+        display: block;
+    }
+
+    .nav-menu{
+        display: none;
+        flex-basis: 100%;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0;
+        padding-top: 0.75rem;
+    }
+
+    .nav-menu.is-open{
+        display: flex;
+    }
+
+    .nav-menu a{
+        width: 100%;
+        padding: 0.65rem 0;
+    }
+
+    .projects-page{
+        padding: 4rem 0;
+    }
+
+    .project-row{
+        grid-template-columns: 1fr;
+        gap: 1.25rem;
+        padding: 1rem;
+    }
+
+    .project-preview{
+        min-height: 160px;
+    }
+
+    .project-image{
+        min-height: 160px;
+    }
+}
